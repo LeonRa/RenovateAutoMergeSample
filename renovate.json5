@@ -1,0 +1,29 @@
+{
+  "$schema": "https://docs.renovatebot.com/renovate-schema.json",
+  "enabledManagers": ["gradle"],
+  "extends": ["config:recommended"],
+  // Require dashboard approval for major and minor version bumps to stem the tide of PRs
+  "major": {
+    "dependencyDashboardApproval": true
+  },
+  "minor": {
+    "dependencyDashboardApproval": true
+  },
+  "packageRules": [
+    // Testing out auto-merge behavior with trusted dependencies
+    {
+      "matchDatasources": ["maven"],
+      "matchPackageNames": ["androidx.fragment:{/,}**"],
+      "matchUpdateTypes": ["patch"],
+      "automerge": true,
+      "autoApprove": true
+    },
+    {
+      "matchDatasources": ["maven"],
+      "matchPackageNames": ["io.reactivex.rxjava3:rxjava"],
+      "matchUpdateTypes": ["patch"],
+      "automerge": true,
+      "autoApprove": true
+    },
+  ],
+}
